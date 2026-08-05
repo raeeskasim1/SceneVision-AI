@@ -1,5 +1,19 @@
+# Dataset
+data/
+
+# Virtual environment
 venv/
+.venv/
+
+# Python cache
 __pycache__/
 *.pyc
-best_model.pth
+
+# Model checkpoints
+*.pth
+
+# Output files
 outputs/
+
+# VS Code
+.vscode/
