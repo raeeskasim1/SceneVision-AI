@@ -23,6 +23,8 @@ full_train_dataset=datasets.ImageFolder(
     transform=transform
 )
 
+CLASS_NAMES = full_train_dataset.classes
+
 dataset_size=len(full_train_dataset)
 
 train_size = int(0.8 * dataset_size)
@@ -58,12 +60,5 @@ test_loader = DataLoader(
     shuffle=False
 )
 
-print(f"Train batches: {len(train_loader)}")
-print(f"Validation batches: {len(val_loader)}")
-print(f"Test batches: {len(test_loader)}")
 
-images, labels = next(iter(train_loader))
-
-print(images.shape)
-print(labels.shape)
 
