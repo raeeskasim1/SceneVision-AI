@@ -29,7 +29,13 @@ Intel Image Classification
 6
 
 #### Training Images:
-14034
+11227
+
+#### Val Images:
+2807
+
+#### Test Images:
+3000
 
 ## Image Information
 - RGB Images (3 Channels)

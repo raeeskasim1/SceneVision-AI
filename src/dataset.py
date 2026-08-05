@@ -25,20 +25,45 @@ full_train_dataset=datasets.ImageFolder(
 
 dataset_size=len(full_train_dataset)
 
-print(dataset_size)
-
 train_size = int(0.8 * dataset_size)
 val_size = dataset_size - train_size
-
-print(train_size)
-print(val_size)
 
 train_dataset, val_dataset = random_split(
     full_train_dataset,
     [train_size , val_size]
 )
 
-print(len(train_dataset))
-print(len(val_dataset))
+BATCH_SIZE = 32
 
+train_loader = DataLoader(
+    dataset=train_dataset,
+    batch_size=BATCH_SIZE,
+    shuffle=True
+)
+
+val_loader = DataLoader(
+    dataset=val_dataset,
+    batch_size=BATCH_SIZE,
+    shuffle=False
+)
+
+test_dataset = datasets.ImageFolder(
+    root=TEST_DIR,
+    transform=transform
+)
+
+test_loader = DataLoader(
+    dataset=test_dataset,
+    batch_size=BATCH_SIZE,
+    shuffle=False
+)
+
+print(f"Train batches: {len(train_loader)}")
+print(f"Validation batches: {len(val_loader)}")
+print(f"Test batches: {len(test_loader)}")
+
+images, labels = next(iter(train_loader))
+
+print(images.shape)
+print(labels.shape)
 
