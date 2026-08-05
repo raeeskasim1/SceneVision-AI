@@ -24,6 +24,7 @@ full_train_dataset=datasets.ImageFolder(
 )
 
 CLASS_NAMES = full_train_dataset.classes
+NUM_CLASSES = len(CLASS_NAMES)
 
 dataset_size=len(full_train_dataset)
 
