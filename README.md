@@ -39,6 +39,8 @@
 
 **Overall Accuracy:** **85.93%**
 
+### Confusion Matrix
+![Confusion Matrix](assets/confusion_matrix.png)
 ---
 
 ### Key Observations
@@ -84,3 +86,17 @@ As information flows through the CNN, the learned representations become increas
 - Block 1 extracts low-level features such as edges and textures.
 - Block 2 combines these into larger visual patterns.
 - Block 3 focuses on high-level semantic features that help distinguish scene categories.
+
+## Misclassified Images
+
+Analyzing incorrect predictions helps identify the model's weaknesses and guides future improvements.
+
+The visualization below shows randomly selected misclassified test images along with:
+
+- Actual class
+- Predicted class
+- Prediction confidence
+
+This analysis reveals which scene categories are visually similar and where the model struggles most.
+
+![Misclassified Images](assets/misclassified_images_v1.png)
