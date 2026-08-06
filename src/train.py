@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import pickle
 
 from dataset import train_loader,val_loader,NUM_CLASSES
 from model.cnn import SceneVisionCNN
@@ -115,7 +116,8 @@ for epoch in range(EPOCHS):
         f"Train Loss: {train_loss:.4f} | "
         f"Train Acc: {train_accuracy:.2f} | "
         f"Val Loss: {val_loss:.4f} | "
-        f"Val Acc: {val_accuracy:.2f}"
+        f"Val Acc: {val_accuracy:.2f} | "
+        f"LR: {optimizer.param_groups[0]['lr']:.6f}"
     )           
 
     if val_loss < best_val_loss:
@@ -128,7 +130,9 @@ for epoch in range(EPOCHS):
             model.state_dict(),
             "outputs/checkpoints/best_model.pth"
         )
-        print("best model saved")
+        print(
+            f" Best model saved! "
+            f"(Epoch {epoch + 1}, Best Val Loss: {best_val_loss:.4f})")
 
     else:
 
@@ -142,3 +146,15 @@ for epoch in range(EPOCHS):
         print("Early stopping triggered!")
 
         break
+
+history = {
+    "train_loss": train_losses,
+    "train_accuracy": train_accuracies,
+    "val_loss": val_losses,
+    "val_accuracy": val_accuracies
+}
+
+with open("outputs/history.pkl","wb") as f:
+    pickle.dump(history, f)
+
+print("Training history saved!")
