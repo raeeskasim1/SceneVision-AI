@@ -58,11 +58,14 @@ class SceneVisionCNN(nn.Module):
     def forward(self,x):
 
         x = self.conv_block1(x)
+        feature_map1 = x
 
         x = self.conv_block2(x)
+        feature_map2 = x
 
         x = self.conv_block3(x)
+        feature_map3 = x
 
         x = self.classifier(x)
 
-        return x
+        return x, feature_map1, feature_map2, feature_map3
