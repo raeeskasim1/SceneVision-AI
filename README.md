@@ -50,3 +50,37 @@
 
 ---
 
+## Training Curves
+
+The training process is visualized using loss and accuracy curves.
+
+- Training Loss vs Validation Loss
+- Training Accuracy vs Validation Accuracy
+
+![Training Curves](assets/training_curves_v1.png)
+
+## Feature Map Visualization
+
+The learned feature maps demonstrate how the CNN progressively extracts visual information.
+
+- Block 1: Edge and texture detection
+- Block 2: Mid-level structures and patterns
+- Block 3: High-level semantic representations for classification
+
+### Block 1
+
+![Block 1 Feature Maps](assets/block1_v1.png)
+
+### Block 2
+
+![Block 2 Feature Maps](assets/block2_v1.png)
+
+### Block 3
+
+![Block 3 Feature Maps](assets/block3_v1.png)
+
+As information flows through the CNN, the learned representations become increasingly abstract.
+
+- Block 1 extracts low-level features such as edges and textures.
+- Block 2 combines these into larger visual patterns.
+- Block 3 focuses on high-level semantic features that help distinguish scene categories.
