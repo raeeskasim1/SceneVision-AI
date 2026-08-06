@@ -1,0 +1,15 @@
+[33m1a0a1cf9[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Add misclassified image visualization
+[33md7b2edd8[m Document training curves and feature map analysis
+[33m5fe991ea[m Add feature map visualization for CNN layers
+[33me58b5367[m Add training curve visualization
+[33m011c8798[m Implement single image prediction pipeline
+[33m3914bec3[m Add Version 1 project documentation
+[33m3a4f2dee[m Add model evaluation with classification metrics and confusion matrix
+[33m25ffeeca[m Add training history saving and improve training logs
+[33m5ab9436b[m Implement complete CNN training pipeline
+[33m6c98d70c[m Set up CUDA-enabled PyTorch environment
+[33mb95ed833[m Build custom CNN architecture
+[33m5c27b3d8[m Build image preprocessing and visualization pipeline
+[33m824d574b[m Create train, validation, and test DataLoaders
+[33maace0d96[m Split training dataset into train and validation sets
+[33mf2e47742[m Initial project structure
