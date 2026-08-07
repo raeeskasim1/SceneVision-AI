@@ -1,3 +1,101 @@
+# 🏞️ SceneVision-AI
+
+A deep learning project for natural scene image classification using a custom Convolutional Neural Network (CNN) built with PyTorch.
+
+## Project Overview
+
+SceneVision-AI is an end-to-end computer vision project that classifies natural scene images into six categories using a custom CNN.
+
+The project demonstrates the complete deep learning workflow, including:
+
+- Dataset preparation
+- Model training
+- Validation
+- Evaluation
+- Prediction
+- Performance visualization
+- Feature map analysis
+- Misclassified image analysis
+
+The project was built as a professional portfolio project following machine learning engineering best practices.
+
+## Features
+
+- Custom CNN architecture
+- GPU (CUDA) training
+- Early Stopping
+- Learning Rate Scheduler
+- Model Checkpointing
+- Single Image Prediction
+- Confusion Matrix
+- Training Curves
+- Feature Map Visualization
+- Misclassified Image Analysis
+
+## Dataset
+
+Dataset: Intel Image Classification Dataset
+
+Classes:
+
+- Buildings
+- Forest
+- Glacier
+- Mountain
+- Sea
+- Street
+
+Image Size: 150 × 150 RGB
+
+### Project Structure
+SceneVision-AI
+│
+├── assets/
+├── data/
+├── outputs/
+├── src/
+│   ├── model/cnn.py
+│   ├── dataset.py
+│   ├── train.py
+│   ├── evaluate.py
+│   ├── predict.py
+│   └── visualize.py
+│
+├── requirements.txt
+└── README.md
+
+## Model Architecture
+
+The baseline model consists of:
+
+- 3 Convolution Blocks
+- Batch Normalization
+- ReLU Activation
+- Max Pooling
+- Fully Connected Classifier
+- Dropout (0.5)
+
+Loss Function:
+- CrossEntropyLoss
+
+Optimizer:
+- Adam
+
+Learning Rate Scheduler:
+- ReduceLROnPlateau
+
+
+## Tech Stack
+
+- Python
+- PyTorch
+- TorchVision
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Pillow
+
+
 # Results
 
 ## 📊 Version 1 (Baseline)
@@ -12,7 +110,7 @@
 
 ---
 
-### Model Configuration
+### Training Configuration
 
 - Custom CNN (3 Convolution Blocks)
 - Batch Normalization
@@ -40,7 +138,11 @@
 **Overall Accuracy:** **85.93%**
 
 ### Confusion Matrix
-![Confusion Matrix](assets/confusion_matrix.png)
+
+The confusion matrix provides a detailed view of the model's predictions across all scene categories.
+
+![Confusion Matrix](assets/confusion_matrix_v1.png)
+
 ---
 
 ### Key Observations
@@ -100,3 +202,9 @@ The visualization below shows randomly selected misclassified test images along 
 This analysis reveals which scene categories are visually similar and where the model struggles most.
 
 ![Misclassified Images](assets/misclassified_images_v1.png)
+
+## Version History
+
+| Version | Description |
+|---------|-------------|
+| v1.0 | Baseline custom CNN with complete training, evaluation, prediction, and visualization pipeline |
