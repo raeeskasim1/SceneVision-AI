@@ -9,9 +9,6 @@ DATA_DIR = Path("data") / "intel"
 TRAIN_DIR = DATA_DIR / "seg_train"
 TEST_DIR = DATA_DIR / "seg_test"
 
-# print(TRAIN_DIR.exists())
-# print(TEST_DIR.exists())
-# print(list(TRAIN_DIR.iterdir()))
 
 train_transform = transforms.Compose([
     transforms.Resize((150,150)),
