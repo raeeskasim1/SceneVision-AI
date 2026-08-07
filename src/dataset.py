@@ -2,7 +2,7 @@ from pathlib import Path
 
 from torchvision import datasets
 from torchvision import transforms
-from torch.utils.data import DataLoader, random_split
+from torch.utils.data import DataLoader, random_split, Subset
 
 DATA_DIR = Path("data") / "intel"
 
@@ -13,28 +13,53 @@ TEST_DIR = DATA_DIR / "seg_test"
 # print(TEST_DIR.exists())
 # print(list(TRAIN_DIR.iterdir()))
 
-transform = transforms.Compose([
+train_transform = transforms.Compose([
+    transforms.Resize((150,150)),
+    transforms.RandomHorizontalFlip(p=0.5),
+    transforms.ToTensor()
+])
+
+test_transform = transforms.Compose([
     transforms.Resize((150,150)),
     transforms.ToTensor()
 ])
 
-full_train_dataset=datasets.ImageFolder(
+
+
+train_full_dataset=datasets.ImageFolder(
     root=TRAIN_DIR,
-    transform=transform
+    transform=train_transform
 )
 
-CLASS_NAMES = full_train_dataset.classes
+val_full_dataset=datasets.ImageFolder(
+    root=TRAIN_DIR,
+    transform=test_transform
+)
+
+CLASS_NAMES = train_full_dataset.classes
 NUM_CLASSES = len(CLASS_NAMES)
 
-dataset_size=len(full_train_dataset)
+dataset_size=len(train_full_dataset)
 
 train_size = int(0.8 * dataset_size)
 val_size = dataset_size - train_size
 
-train_dataset, val_dataset = random_split(
-    full_train_dataset,
+train_indices, val_indices = random_split(
+    train_full_dataset,
     [train_size , val_size]
 )
+
+
+train_dataset = Subset(
+    train_full_dataset,
+    train_indices.indices
+)
+
+val_dataset = Subset(
+    val_full_dataset,
+    val_indices.indices
+)
+
 
 BATCH_SIZE = 32
 
@@ -52,7 +77,7 @@ val_loader = DataLoader(
 
 test_dataset = datasets.ImageFolder(
     root=TEST_DIR,
-    transform=transform
+    transform=test_transform
 )
 
 test_loader = DataLoader(
