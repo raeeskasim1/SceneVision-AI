@@ -68,4 +68,4 @@ class SceneVisionCNN(nn.Module):
 
         x = self.classifier(x)
 
-        return x, feature_map1, feature_map2, feature_map3
+        return x
