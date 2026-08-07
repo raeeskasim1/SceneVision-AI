@@ -165,7 +165,13 @@ The training process is visualized using loss and accuracy curves.
 
 ## Feature Map Visualization
 
-The learned feature maps demonstrate how the CNN progressively extracts visual information.
+The feature maps below show how the CNN progressively transforms the input image into increasingly abstract representations.
+
+### Input Image
+
+![Input Image](assets/sample_prediction_image.png)
+
+---
 
 - Block 1: Edge and texture detection
 - Block 2: Mid-level structures and patterns
@@ -175,13 +181,19 @@ The learned feature maps demonstrate how the CNN progressively extracts visual i
 
 ![Block 1 Feature Maps](assets/block1_v1.png)
 
+---
+
 ### Block 2
 
 ![Block 2 Feature Maps](assets/block2_v1.png)
 
+---
+
 ### Block 3
 
 ![Block 3 Feature Maps](assets/block3_v1.png)
+
+---
 
 As information flows through the CNN, the learned representations become increasingly abstract.
 
