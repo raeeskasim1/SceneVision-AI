@@ -50,19 +50,19 @@ Image Size: 150 × 150 RGB
 ### Project Structure
 SceneVision-AI
 │
-├── assets/
-├── data/
-├── outputs/
-├── src/
-│   ├── model/cnn.py
-│   ├── dataset.py
-│   ├── train.py
-│   ├── evaluate.py
-│   ├── predict.py
-│   └── visualize.py
-│
-├── requirements.txt
-└── README.md
+├── assets/     
+├── data/     
+├── outputs/    
+├── src/     
+│   ├── model/cnn.py     
+│   ├── dataset.py    
+│   ├── train.py    
+│   ├── evaluate.py    
+│   ├── predict.py    
+│   └── visualize.py     
+│     
+├── requirements.txt       
+└── README.md     
 
 ## Model Architecture
 
@@ -169,7 +169,7 @@ The feature maps below show how the CNN progressively transforms the input image
 
 ### Input Image
 
-![Input Image](assets/sample_prediction_image.png)
+![Input Image](assets/sample_prediction_image.jpg)
 
 ---
 
