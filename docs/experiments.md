@@ -13,23 +13,30 @@ Result:
 Status:
 ✅ Accepted as Baseline
 
-# Experiment 1
+## Experiment E1
 
-Title:
-Data Augmentation
+### Title
+Random Horizontal Flip
 
-Objective:
-Improve generalization without changing the model architecture.
+### Objective
+Evaluate whether horizontal flipping improves generalization.
 
-Changes:
-- RandomHorizontalFlip
-- RandomRotation
+### Change
+Added:
+- RandomHorizontalFlip(p=0.5)
 
-Expected Result:
-Improve validation and test accuracy while reducing overfitting.
+### Results
 
-Outcome:
-(To be filled after training)
+Train Accuracy: 84.37
+Validation Accuracy: 85.86
+Test Accuracy: 85.13%
 
-Decision:
-Keep / Reject
+### Baseline
+
+Test Accuracy: 85.93%
+
+### Conclusion
+
+❌ Rejected
+
+Horizontal flipping reduced test accuracy by approximately 0.8 percentage points compared to the baseline.

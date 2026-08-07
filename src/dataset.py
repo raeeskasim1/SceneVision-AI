@@ -15,7 +15,6 @@ TEST_DIR = DATA_DIR / "seg_test"
 
 train_transform = transforms.Compose([
     transforms.Resize((150,150)),
-    transforms.RandomHorizontalFlip(p=0.5),
     transforms.ToTensor()
 ])
 

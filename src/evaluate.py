@@ -19,7 +19,7 @@ model = SceneVisionCNN(NUM_CLASSES).to(device)
 
 model.load_state_dict(
     torch.load(
-        "outputs/checkpoints/best_model.pth",
+        "outputs/checkpoints/best_model_e1.pth",
         map_location=device
     )
 )
@@ -93,7 +93,7 @@ disp.plot(
 plt.tight_layout()
 
 plt.savefig(
-    "assets/reportsconfusion_matrix_e1.png",
+    "assets/reports/confusion_matrix_e1.png",
     dpi=300,
     bbox_inches="tight"
 )
