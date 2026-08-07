@@ -149,7 +149,7 @@ The confusion matrix provides a detailed view of the model's predictions across 
 
 - Best-performing class: **Forest** (F1-score: **0.96**)
 - Most challenging classes: **Glacier** and **Mountain**
-- Major confusion occurred between **Mountain ↔ Glacier**, indicating visually similar features.
+- Major confusion occurred betweencls **Mountain ↔ Glacier**, indicating visually similar features.
 - Training pipeline included checkpointing, learning-rate scheduling, and early stopping.
 
 ---

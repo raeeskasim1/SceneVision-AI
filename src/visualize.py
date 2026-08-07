@@ -4,7 +4,7 @@ import torch
 import random
 
 from PIL import Image
-from dataset import train_loader, CLASS_NAMES, transform, NUM_CLASSES,test_loader
+from dataset import train_loader, CLASS_NAMES, test_transform, NUM_CLASSES,test_loader
 from model.cnn import SceneVisionCNN
 from pathlib import Path
 
@@ -83,7 +83,7 @@ def plot_training_curves():
     plt.tight_layout()
 
     plt.savefig(
-        "assets/training_curves_v1.png",
+        "assets/curves/training_curves_e1.png",
         dpi=300,
         bbox_inches="tight"
     )
@@ -243,10 +243,12 @@ def visualize_misclassified_images():
 
 if __name__ == "__main__":
 
+    plot_training_curves()
+
     # plot_training_curves()
     # fm1, fm2, fm3 = get_feature_maps()
     # visualize_feature_maps(fm1, "block1")
     # visualize_feature_maps(fm2, "block2")
     # visualize_feature_maps(fm3, "block3")
 
-    visualize_misclassified_images()
+    # visualize_misclassified_images()

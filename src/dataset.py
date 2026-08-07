@@ -44,9 +44,12 @@ dataset_size=len(train_full_dataset)
 train_size = int(0.8 * dataset_size)
 val_size = dataset_size - train_size
 
+generator = torch.Generator().manual_seed(42)
+
 train_indices, val_indices = random_split(
     train_full_dataset,
-    [train_size , val_size]
+    [train_size , val_size],
+    generator=generator
 )
 
 

@@ -4,6 +4,7 @@ import pickle
 
 from dataset import train_loader,val_loader,NUM_CLASSES
 from model.cnn import SceneVisionCNN
+from utils import set_seed
 
 device=torch.device(
     "cuda" if torch.cuda.is_available() else "cpu"
@@ -128,7 +129,7 @@ for epoch in range(EPOCHS):
 
         torch.save(
             model.state_dict(),
-            "outputs/checkpoints/best_model.pth"
+            "outputs/checkpoints/best_model_e1.pth"
         )
         print(
             f" Best model saved! "
@@ -154,7 +155,7 @@ history = {
     "val_accuracy": val_accuracies
 }
 
-with open("outputs/history.pkl","wb") as f:
+with open("outputs/history_e1.pkl","wb") as f:
     pickle.dump(history, f)
 
 print("Training history saved!")

@@ -93,7 +93,7 @@ disp.plot(
 plt.tight_layout()
 
 plt.savefig(
-    "outputs/confusion_matrix.png",
+    "assets/reportsconfusion_matrix_e1.png",
     dpi=300,
     bbox_inches="tight"
 )
