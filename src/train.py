@@ -16,7 +16,8 @@ criterion = nn.CrossEntropyLoss()
 
 optimizer = torch.optim.Adam(
     model.parameters(),
-    lr=0.001
+    lr=0.001,
+    weight_decay=0.0001
 )
 
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
@@ -137,7 +138,7 @@ for epoch in range(EPOCHS):
 
         torch.save(
             model.state_dict(),
-            "outputs/checkpoints/best_model_e2.pth"
+            "outputs/checkpoints/best_model_e3.pth"
         )
         print(
             f" Best model saved! "
@@ -174,7 +175,7 @@ history = {
     "val_accuracy": val_accuracies
 }
 
-with open("outputs/history_e2.pkl","wb") as f:
+with open("outputs/history_e3.pkl","wb") as f:
     pickle.dump(history, f)
 
 print("Training history saved!")
