@@ -16,8 +16,7 @@ criterion = nn.CrossEntropyLoss()
 
 optimizer = torch.optim.Adam(
     model.parameters(),
-    lr=0.001,
-    weight_decay=0.0001
+    lr=0.001
 )
 
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
