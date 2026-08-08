@@ -16,7 +16,7 @@ criterion = nn.CrossEntropyLoss()
 
 optimizer = torch.optim.Adam(
     model.parameters(),
-    lr=0.0005
+    lr=0.001
 )
 
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
@@ -155,7 +155,7 @@ for epoch in range(EPOCHS):
         print("Early stopping triggered!")
 
         break
-    
+
 print("\n" + "=" * 60)
 print("BEST MODEL RESULTS")
 print("=" * 60)
