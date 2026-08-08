@@ -117,9 +117,9 @@ def get_feature_maps():
 
     with torch.no_grad():
 
-        _, fm1, fm2, fm3 = model(image)
+        _, fm1, fm2, fm3, fm4 = model(image)
 
-    return fm1, fm2, fm3
+    return fm1, fm2, fm3, fm4
 
 
 def visualize_feature_maps(feature_maps, block_name):
@@ -138,7 +138,7 @@ def visualize_feature_maps(feature_maps, block_name):
         plt.tight_layout(rect=[0, 0, 1, 0.96])
         plt.title(f"FM {i+1}", fontsize=8)
     plt.savefig(
-            f"assets/{block_name.lower().replace(' ', '_')}_v1.png",
+            f"assets/feature_maps/{block_name.lower().replace(' ', '_')}_v2.png",
             dpi=300,
             bbox_inches="tight"
         )
@@ -155,7 +155,7 @@ def visualize_misclassified_images():
 
     model.load_state_dict(
         torch.load(
-            "outputs/checkpoints/best_model.pth",
+            "outputs/checkpoints/best_model_e4.pth",
             map_location=device
         )
     )
@@ -174,7 +174,7 @@ def visualize_misclassified_images():
             images = images.to(device)
             labels = labels.to(device)
 
-            outputs, _, _, _ = model(images)
+            outputs, _, _, _,_ = model(images)
 
             probabilities = torch.softmax(outputs, dim=1)
 
@@ -234,7 +234,7 @@ def visualize_misclassified_images():
     plt.tight_layout()
 
     plt.savefig(
-        "assets/misclassified_images_v1.png",
+        "assets/misclassified_images_v2.png",
         dpi=300,
         bbox_inches="tight"
     )
@@ -243,12 +243,13 @@ def visualize_misclassified_images():
 
 if __name__ == "__main__":
 
-    plot_training_curves()
+    # plot_training_curves()
 
     # plot_training_curves()
-    # fm1, fm2, fm3 = get_feature_maps()
-    # visualize_feature_maps(fm1, "block1")
-    # visualize_feature_maps(fm2, "block2")
-    # visualize_feature_maps(fm3, "block3")
+    fm1, fm2, fm3, fm4 = get_feature_maps()
+    visualize_feature_maps(fm1, "feature_map1")
+    visualize_feature_maps(fm2, "feature_map2")
+    visualize_feature_maps(fm3, "feature_map3")
+    visualize_feature_maps(fm4, "feature_map4")
 
-    # visualize_misclassified_images()
+    visualize_misclassified_images()
