@@ -73,3 +73,42 @@ E2 produced a very small improvement in test accuracy:
 However, validation accuracy decreased from `86.96%` to `84.97%`, so the improvement is too small to consider the learning-rate change a meaningful performance improvement.
 
 **Decision: Keep the experiment result recorded, but use the baseline learning rate `0.001` for the next experiment.**
+
+## E3 — Weight Decay
+
+### Objective
+
+Evaluate whether weight decay can reduce overfitting and improve generalization.
+
+### Change
+
+Baseline:
+
+- Learning rate: `0.001`
+- Weight decay: `0`
+
+E3:
+
+- Learning rate: `0.001`
+- Weight decay: `0.0001`
+
+No other model or training configuration was changed.
+
+### Results
+
+| Metric | v1.0 Baseline | E3 |
+|---|---:|---:|
+| Train Accuracy | 93.36% | 84.16% |
+| Validation Accuracy | 86.96% | 84.61% |
+| Test Accuracy | 85.93% | 84.60% |
+
+### Conclusion
+
+Weight decay did not improve performance.
+
+Test accuracy decreased from `85.93%` to `84.60%`
+(**−1.33 percentage points**).
+
+The experiment was therefore rejected.
+
+**Decision: Do not use weight decay for the next experiment.**
