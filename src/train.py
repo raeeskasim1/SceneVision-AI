@@ -137,7 +137,7 @@ for epoch in range(EPOCHS):
 
         torch.save(
             model.state_dict(),
-            "outputs/checkpoints/best_model_e3.pth"
+            "outputs/checkpoints/best_model_e4.pth"
         )
         print(
             f" Best model saved! "
@@ -174,7 +174,7 @@ history = {
     "val_accuracy": val_accuracies
 }
 
-with open("outputs/history_e3.pkl","wb") as f:
+with open("outputs/history_e4.pkl","wb") as f:
     pickle.dump(history, f)
 
 print("Training history saved!")

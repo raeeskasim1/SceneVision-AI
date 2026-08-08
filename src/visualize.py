@@ -32,7 +32,7 @@ def visualize_sample_batch():
     plt.show()
 
 def plot_training_curves():
-    history_path = Path("outputs") / "history.pkl"
+    history_path = Path("outputs") / "history_e4.pkl"
 
     with open(history_path, "rb") as f:
         history = pickle.load(f)
@@ -83,7 +83,7 @@ def plot_training_curves():
     plt.tight_layout()
 
     plt.savefig(
-        "assets/curves/training_curves_e1.png",
+        "assets/curves/training_curves_e4.png",
         dpi=300,
         bbox_inches="tight"
     )
@@ -100,7 +100,7 @@ def get_feature_maps():
 
     model.load_state_dict(
         torch.load(
-            "outputs/checkpoints/best_model.pth",
+            "outputs/checkpoints/best_model_e4.pth",
             map_location=device
         )
     )
@@ -111,7 +111,7 @@ def get_feature_maps():
 
     image = Image.open(image_path).convert("RGB")
 
-    image = transform(image)
+    image = test_transform(image)
 
     image = image.unsqueeze(0).to(device)
 
