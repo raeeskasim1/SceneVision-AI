@@ -112,3 +112,42 @@ Test accuracy decreased from `85.93%` to `84.60%`
 The experiment was therefore rejected.
 
 **Decision: Do not use weight decay for the next experiment.**
+
+## E4 — CNN Architecture Improvement
+
+### Objective
+
+Evaluate whether increasing the CNN's feature extraction capacity improves image classification performance.
+
+### Change
+
+Baseline:
+
+- Convolution blocks: `3`
+- Channels: `3 → 32 → 64 → 128`
+
+E4:
+
+- Convolution blocks: `4`
+- Channels: `3 → 32 → 64 → 128 → 256`
+
+No other model or training configuration was changed.
+
+### Results
+
+| Metric              | v1.0 Baseline |     E4 |
+| ------------------- | ------------: | -----: |
+| Train Accuracy      |        93.36% | 91.12% |
+| Validation Accuracy |        86.96% | 87.10% |
+| Test Accuracy       |        85.93% | **87.77%** |
+
+### Conclusion
+
+Adding a fourth convolution block improved the model's test performance.
+
+Test accuracy increased from `85.93%` to `87.77%`
+(**+1.84 percentage points**).
+
+The additional convolution block provided greater feature extraction capacity and improved generalization.
+
+**Decision: Keep E4 as the new baseline.**
