@@ -48,8 +48,8 @@ Classes:
 Image Size: 150 × 150 RGB
 
 ### Project Structure
-SceneVision-AI
-│
+SceneVision-AI       
+│           
 ├── assets/     
 ├── data/     
 ├── outputs/    
@@ -66,23 +66,16 @@ SceneVision-AI
 
 ## Model Architecture
 
-The baseline model consists of:
+The project started with a 3-block baseline CNN and was improved to a 4-block CNN through controlled experiments.
 
-- 3 Convolution Blocks
+### Final Architecture
+
+- 4 Convolution Blocks
 - Batch Normalization
 - ReLU Activation
 - Max Pooling
 - Fully Connected Classifier
 - Dropout (0.5)
-
-Loss Function:
-- CrossEntropyLoss
-
-Optimizer:
-- Adam
-
-Learning Rate Scheduler:
-- ReduceLROnPlateau
 
 
 ## Tech Stack
@@ -95,6 +88,17 @@ Learning Rate Scheduler:
 - Scikit-learn
 - Pillow
 
+### Training Configuration
+
+- Custom CNN (4 Convolution Blocks)
+- Batch Normalization
+- ReLU Activation
+- Max Pooling
+- Adam Optimizer
+- ReduceLROnPlateau Learning Rate Scheduler
+- Early Stopping (Patience = 10)
+- CrossEntropyLoss
+- CUDA GPU Training
 
 # Results
 
@@ -110,47 +114,51 @@ Learning Rate Scheduler:
 
 ---
 
-### Training Configuration
+## 🚀 Version 2 — Improved CNN
 
-- Custom CNN (3 Convolution Blocks)
-- Batch Normalization
-- ReLU Activation
-- Max Pooling
-- Adam Optimizer
-- ReduceLROnPlateau Learning Rate Scheduler
-- Early Stopping (Patience = 10)
-- CrossEntropyLoss
-- CUDA GPU Training
+Added a fourth convolution block:
+
+3 → 32 → 64 → 128 → 256
+
+| Metric              | v1.0 | v2.0 |
+| ------------------- | ---: | ---: |
+| Train Accuracy      | 93.36% | 91.12% |
+| Validation Accuracy | 86.96% | 87.10% |
+| Test Accuracy       | 85.93% | **87.77%** |
+
+**Improvement: +1.84 percentage points**
+
+Detailed E1–E4 experiments are documented in [`experiments.md`](docs/experiments.md).
 
 ---
 
 ### Classification Report
 
-| Class | Precision | Recall | F1-Score |
-|--------|----------:|-------:|---------:|
-| Buildings | 0.84 | 0.82 | 0.83 |
-| Forest | **0.96** | **0.97** | **0.96** |
-| Glacier | 0.81 | 0.83 | 0.82 |
-| Mountain | 0.82 | 0.80 | 0.81 |
-| Sea | 0.87 | 0.89 | 0.88 |
-| Street | 0.87 | 0.86 | 0.87 |
+| Class     | Precision | Recall | F1-Score |
+| --------- | --------: | -----: | -------: |
+| Buildings | 0.86 | 0.85 | 0.85 |
+| Forest    | **0.97** | **0.98** | **0.97** |
+| Glacier   | 0.82 | 0.86 | 0.84 |
+| Mountain  | 0.84 | 0.82 | 0.83 |
+| Sea       | 0.90 | 0.89 | 0.89 |
+| Street    | 0.89 | 0.88 | 0.88 |
 
-**Overall Accuracy:** **85.93%**
+**Overall Accuracy:** **87.77%**
 
 ### Confusion Matrix
 
 The confusion matrix provides a detailed view of the model's predictions across all scene categories.
 
-![Confusion Matrix](assets/confusion_matrix_v1.png)
+![Confusion Matrix](assets/reports/confusion_matrix_e4.png)
 
 ---
 
 ### Key Observations
 
-- Best-performing class: **Forest** (F1-score: **0.96**)
+- Best-performing class: **Forest** (F1-score: **0.97**)
 - Most challenging classes: **Glacier** and **Mountain**
-- Major confusion occurred betweencls **Mountain ↔ Glacier**, indicating visually similar features.
-- Training pipeline included checkpointing, learning-rate scheduling, and early stopping.
+- Mountain and Glacier remain challenging due to visually similar scene characteristics.
+- The improved CNN increased test accuracy from **85.93% to 87.77%**.
 
 ---
 
@@ -161,7 +169,7 @@ The training process is visualized using loss and accuracy curves.
 - Training Loss vs Validation Loss
 - Training Accuracy vs Validation Accuracy
 
-![Training Curves](assets/training_curves_v1.png)
+![Training Curves](assets/curves/training_curves_e4.png)
 
 ## Feature Map Visualization
 
@@ -179,19 +187,25 @@ The feature maps below show how the CNN progressively transforms the input image
 
 ### Block 1
 
-![Block 1 Feature Maps](assets/block1_v1.png)
+![Block 1 Feature Maps](assets/feature_maps/feature_map1_v2.png)
 
 ---
 
 ### Block 2
 
-![Block 2 Feature Maps](assets/block2_v1.png)
+![Block 2 Feature Maps](assets/feature_maps/feature_map2_v2.png)
 
 ---
 
 ### Block 3
 
-![Block 3 Feature Maps](assets/block3_v1.png)
+![Block 3 Feature Maps](assets/feature_maps/feature_map3_v2.png)
+
+---
+
+### Block 4
+
+![Block 4 Feature Maps](assets/feature_maps/feature_map4_v2.png)
 
 ---
 
@@ -213,10 +227,11 @@ The visualization below shows randomly selected misclassified test images along 
 
 This analysis reveals which scene categories are visually similar and where the model struggles most.
 
-![Misclassified Images](assets/misclassified_images_v1.png)
+![Misclassified Images](assets/misclassified_images_v2.png)
 
 ## Version History
 
 | Version | Description |
-|---------|-------------|
+| ------- | ----------- |
 | v1.0 | Baseline custom CNN with complete training, evaluation, prediction, and visualization pipeline |
+| v2.0 | Improved CNN with an additional convolution block, achieving **87.77% test accuracy** |
