@@ -16,7 +16,7 @@ criterion = nn.CrossEntropyLoss()
 
 optimizer = torch.optim.Adam(
     model.parameters(),
-    lr=0.001
+    lr=0.0005
 )
 
 scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
@@ -40,6 +40,10 @@ val_losses = []
 val_accuracies = []
 
 best_val_loss = float("inf")
+best_train_loss = 0
+best_train_accuracy = 0
+best_val_accuracy = 0
+best_epoch = 0
 
 patience = 10
 counter = 0
@@ -124,12 +128,16 @@ for epoch in range(EPOCHS):
     if val_loss < best_val_loss:
 
         best_val_loss = val_loss
+        best_epoch = epoch + 1
+        best_train_loss = train_loss
+        best_train_accuracy = train_accuracy
+        best_val_accuracy = val_accuracy
 
         counter = 0
 
         torch.save(
             model.state_dict(),
-            "outputs/checkpoints/best_model_e1.pth"
+            "outputs/checkpoints/best_model_e2.pth"
         )
         print(
             f" Best model saved! "
@@ -147,6 +155,17 @@ for epoch in range(EPOCHS):
         print("Early stopping triggered!")
 
         break
+    
+print("\n" + "=" * 60)
+print("BEST MODEL RESULTS")
+print("=" * 60)
+
+print(f"Best Epoch:        {best_epoch}")
+print(f"Train Loss:        {best_train_loss:.4f}")
+print(f"Train Accuracy:    {best_train_accuracy:.2f}%")
+print(f"Validation Loss:   {best_val_loss:.4f}")
+print(f"Validation Accuracy: {best_val_accuracy:.2f}%")
+print("=" * 60)
 
 history = {
     "train_loss": train_losses,
@@ -155,7 +174,7 @@ history = {
     "val_accuracy": val_accuracies
 }
 
-with open("outputs/history_e1.pkl","wb") as f:
+with open("outputs/history_e2.pkl","wb") as f:
     pickle.dump(history, f)
 
 print("Training history saved!")

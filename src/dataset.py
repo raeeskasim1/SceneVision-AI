@@ -18,6 +18,7 @@ train_transform = transforms.Compose([
 test_transform = transforms.Compose([
     transforms.Resize((150,150)),
     transforms.ToTensor()
+
 ])
 
 
