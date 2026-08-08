@@ -13,10 +13,7 @@ Result:
 Status:
 ✅ Accepted as Baseline
 
-## Experiment E1
-
-### Title
-Random Horizontal Flip
+## Experiment E1 - Random Horizontal Flip
 
 ### Objective
 Evaluate whether horizontal flipping improves generalization.
@@ -40,3 +37,39 @@ Test Accuracy: 85.93%
 ❌ Rejected
 
 Horizontal flipping reduced test accuracy by approximately 0.8 percentage points compared to the baseline.
+
+## E2 — Learning Rate Tuning
+
+### Objective
+
+Evaluate whether reducing the initial learning rate improves model generalization.
+
+### Change
+
+Baseline:
+
+- Learning rate: `0.001`
+
+E2:
+
+- Learning rate: `0.0005`
+
+No other model or training configuration was changed.
+
+### Results
+
+| Metric | v1.0 Baseline | E2 |
+|---|---:|---:|
+| Train Accuracy | 93.36% | 90.47% |
+| Validation Accuracy | 86.96% | 84.97% |
+| Test Accuracy | 85.93% | **86.00%** |
+
+### Conclusion
+
+E2 produced a very small improvement in test accuracy:
+
+`85.93% → 86.00%` (**+0.07 percentage points**).
+
+However, validation accuracy decreased from `86.96%` to `84.97%`, so the improvement is too small to consider the learning-rate change a meaningful performance improvement.
+
+**Decision: Keep the experiment result recorded, but use the baseline learning rate `0.001` for the next experiment.**
